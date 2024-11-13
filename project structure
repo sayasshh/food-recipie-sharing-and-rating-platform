@@ -1,1 +1,59 @@
-
+recipe-sharing-system/
+├── frontend/                  # Frontend application
+│   ├── public/                # Public assets
+│   │   ├── index.html         # Main HTML file
+│   │   ├── favicon.ico        # Favicon
+│   │   └── assets/            # Static assets (images, fonts, etc.)
+│   ├── src/                   # Source files
+│   │   ├── components/        # Reusable components (e.g., Navbar, RecipeCard)
+│   │   ├── pages/             # Page components (e.g., Home, RecipeDetails, SubmitRecipe)
+│   │   ├── services/          # API service calls
+│   │   ├── App.js             # Main application component
+│   │   ├── index.js           # Entry point for React
+│   │   ├── styles/            # CSS/SCSS styles
+│   │   └── utils/             # Utility functions (e.g., form validation)
+│   ├── .env                   # Environment variables for frontend
+│   ├── package.json           # Frontend dependencies and scripts
+│   └── README.md              # Frontend specific documentation
+├── backend/                   # Backend application
+│   ├── config/                # Configuration files (e.g., database, environment variables)
+│   ├── controllers/           # Request handlers for routes
+│   ├── models/                # Database models (e.g., User, Recipe)
+│   ├── routes/                # API route definitions
+│   ├── middleware/            # Custom middleware (e.g., authentication)
+│   ├── utils/                 # Utility functions (e.g., error handling)
+│   ├── .env                   # Environment variables for backend
+│   ├── package.json           # Backend dependencies and scripts
+│   ├── server.js              # Main server file
+│   └── README.md              # Backend specific documentation
+├── .gitignore                 # Git ignore file
+├── LICENSE                    # License file
+└── README.md                  # Main project documentation
+# License file
+Explanation of Key Directories and Files
+Frontend (frontend/)
+public/: Contains static files that are publicly accessible, such as the main HTML file and assets.
+src/: Contains all the source code for the frontend application.
+components/: Reusable UI components that can be used across different pages.
+pages/: Components that represent different pages in the application.
+services/: Functions for making API calls to the backend.
+styles/: CSS or SCSS files for styling the application.
+utils/: Utility functions that can be used throughout the application.
+.env: Environment variables specific to the frontend.
+package.json: Lists dependencies and scripts for the frontend application.
+Backend (backend/)
+config/: Contains configuration files for the application, such as database connection settings.
+controllers/: Contains functions that handle requests and responses for specific routes.
+models/: Defines the data structure for the application (e.g., User, Recipe) using a database ORM.
+routes/: Defines the API endpoints and maps them to controller functions.
+middleware/: Contains custom middleware for handling requests, such as authentication checks.
+utils/: Utility functions for tasks such as error handling or data formatting.
+.env: Environment variables specific to the backend.
+package.json: Lists dependencies and scripts for the backend application.
+server.js: The entry point for the backend application that starts the server.
+Additional Files
+.gitignore: Specifies files and directories that should be ignored by Git.
+LICENSE: Contains the license information for the project.
+README.md: Provides documentation for the entire project, including installation instructions, usage, and contribution guidelines.
+This structure provides a clean separation between frontend and backend code, making it easier for developers to work on different parts of the application without confusion. Adjustments can be made based on specific project requirements, but this serves as a solid foundation.
+└── README.md                  # Main project documentation
