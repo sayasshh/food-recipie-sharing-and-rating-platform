@@ -1,1 +1,118 @@
+Database Schema
+1. Users Table
+This table stores user information.
 
+sql
+
+Verify
+
+Open In Editor
+Edit
+Copy code
+CREATE TABLE Users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+2. Recipes Table
+This table stores the details of the recipes.
+
+sql
+
+Verify
+
+Open In Editor
+Edit
+Copy code
+CREATE TABLE Recipes (
+    recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    ingredients TEXT NOT NULL,
+    instructions TEXT NOT NULL,
+    cooking_time INT, -- in minutes
+    cuisine VARCHAR(50),
+    image_url VARCHAR(255),
+    category_id INT, -- Foreign key to categorize recipes
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE SET NULL
+);
+3. Ratings Table
+This table stores the ratings given by users to recipes.
+
+sql
+
+Verify
+
+Open In Editor
+Edit
+Copy code
+CREATE TABLE Ratings (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5), -- Ratings between 1 and 5
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE,
+    UNIQUE KEY (user_id, recipe_id) -- A user can rate a recipe only once
+);
+4. Comments Table
+This table stores comments made by users on recipes.
+
+sql
+
+Verify
+
+Open In Editor
+Edit
+Copy code
+CREATE TABLE Comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id) ON DELETE CASCADE
+);
+5. Categories Table (Optional)
+This table can be used to categorize recipes (e.g., Vegan, Desserts, Main Course).
+
+sql
+
+Verify
+
+Open In Editor
+Edit
+Copy code
+CREATE TABLE Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(50) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+Summary of Tables
+Users: Contains user information, including username, email, and password hash.
+Recipes: Contains recipe details, including title, ingredients, instructions, cooking time, cuisine, and a reference to the user who created it. It can also reference a category.
+Ratings: Stores user ratings for recipes, ensuring that each user can rate a recipe only once.
+Comments: Allows users to leave comments on recipes, providing feedback or asking questions.
+Categories: (Optional) Allows categorization of recipes for easier browsing.
+Additional Considerations
+Indexes: You may want to create indexes on fields that are frequently queried, such as username, email, or created_at.
+
+Data Types: Ensure that the data types used are suitable for the expected data (e.g., VARCHAR lengths, TEXT for long descriptions).
+
+Security: Implement proper hashing and salting for user passwords when storing them in the Users table.
+
+Relationships: Foreign key constraints ensure that if a user is deleted, all associated recipes, ratings, and comments are also deleted.
+
+Data Integrity: Use cascading deletes or updates carefully to maintain data integrity without losing important information.
+
+This schema provides a comprehensive foundation for the Food Recipe Sharing and Rating System, allowing for efficient data storage and retrieval related to users, recipes, ratings, comments, and categories. Adjustments may be made based on specific application requirements or additional features you might want to implement.
