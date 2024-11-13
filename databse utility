@@ -1,1 +1,15 @@
+public class RecipeApp {
+    public static void main(String[] args) {
+        // Example: Insert a new user
+        String insertUser SQL = "INSERT INTO Users (username, email, password_hash) VALUES ('john_doe', 'john@example.com', 'hashed_password')";
+        DatabaseUtility.executeUpdate(insertUser SQL);
 
+        // Example: Update a recipe
+        String updateRecipeSQL = "UPDATE Recipes SET title = 'Updated Recipe Title' WHERE recipe_id = 1";
+        DatabaseUtility.executeUpdate(updateRecipeSQL);
+
+        // Example: Delete a comment
+        String deleteCommentSQL = "DELETE FROM Comments WHERE comment_id = 1";
+        DatabaseUtility.executeUpdate(deleteCommentSQL);
+    }
+}
