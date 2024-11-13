@@ -1,1 +1,66 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+public class DatabaseUtility {
+
+    // Database URL, username, and password
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/recipe_sharing_db"; // Change to your DB name
+    private static final String USER = "your_username"; // Change to your DB username
+    private static final String PASSWORD = "your_password"; // Change to your DB password
+
+    // Method to establish a connection to the database
+    public static Connection getConnection() {
+        Connection connection = null;
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Establish the connection
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println("Connection to the database established successfully.");
+        } catch (ClassNotFoundException e) {
+            System.err.println("MySQL JDBC Driver not found. Include it in your library path.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.err.println("Connection failed. Check output console.");
+            e.printStackTrace();
+        }
+        return connection;
+    }
+
+    // Method to close the connection
+    public static void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Connection closed.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Example method to execute a SQL statement (e.g., INSERT, UPDATE, DELETE)
+    public static void executeUpdate(String sql) {
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = getConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            System.out.println("SQL statement executed: " + sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                closeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
