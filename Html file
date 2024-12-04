@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing and Rating Platform</title>
+    <link rel="stylesheet" href="index.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="head">
+        <h1>Recipe Hub</h1>
+        <p>Share your favorite recipes and rate others!</p>
+</div>
 
+<div class="trend">
+
+</div>
+
+ <div class="image">
+    <img src="https://i.postimg.cc/28ZzcQyW/zoshua-colah-VIqc-Vq-Z1ux-M-unsplash.jpg"height="1000"width=800></img>
+ </div>
+
+ <div class="book">
+
+ </div>
+    
+   <div class="add">
+    
+    <h2 class="ball">Add a New Recipe</h2>
+    <input class="bat" type="text" id="username" name="username" placeholder="Type your recipe">
+    <button class="login">Search</button>
+   
+    
+    <!---
+    <form id="recipeForm">
+        <input type="text" placeholder="Recipe Title" required>
+        <textarea placeholder="Recipe Description" rows="3" required></textarea>
+        <button type="submit">Add Recipe</button>
+    </form>
+-->
+   
+    
+
+   </div>
+        
+    
+
+    <section class="recipe-list">
+        <h2>Popular Recipes</h2>
+        <div class="recipe-card">
+            <img src="https://i.postimg.cc/kgWg4QdC/faez-daniel-1a-Xm7g-ETd-LE-unsplash.jpg" alt="Spaghetti Carbonara"height="200"width=300>
+            <h3>Spaghetti Carbonara</h3>
+            <p>A classic Italian pasta with a creamy, cheesy sauce.</p>
+            <div class="rating">Rating: 4.5 ⭐</div>
+        </div>
+        <div class="recipe-card">
+            <img src="https://i.postimg.cc/vBYBCcks/will-echols-P-l1b-JQp-QF0-unsplash.jpg" alt="Chocolate Cake" height="200"width=200>
+            <h3>Chocolate Cake</h3>
+            <p>Rich, moist chocolate cake topped with chocolate ganache.</p>
+            <div class="rating">Rating: 4.8 ⭐</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RecipeHub. Share and enjoy delicious recipes!</p>
+    </footer>
+</body>
+</html>
