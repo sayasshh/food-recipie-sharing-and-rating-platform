@@ -1,1 +1,151 @@
+/* Universal styles for margin, padding, and font */
+* {
+    
+    margin: 1000;
+    padding: 800;
+    
+    font-family: Arial, sans-serif;
+}
 
+/* Body background and text color with background image */
+
+
+/* Header styling */
+.head{
+    background-color:  rgba(0, 0, 0, 0.8); /* Transparent background */
+
+    color: rgb(238, 236, 236);
+    width: 99vw;
+    text-align: center;
+}
+
+.head h1 {
+    font-size: 51px;
+    margin-bottom: 7px;
+}
+
+.head p {
+    font-size: 20px;
+    
+   
+}
+.trend{
+    
+    background-color: #262323;
+    height: 1vh;
+    width: 99vw;
+   
+}
+
+.image img {
+    width: 99vw;
+    height: 65vh;
+    margin-top: 10px;
+}
+
+
+.book{
+    background-color: #682929;
+    height: 1vh;
+    width: 99vw;
+    margin-top: -4px ;
+    
+
+}
+
+.add{
+    border: solid black;
+    width: 98vw;
+    height: 23vh;
+    
+  
+}
+
+.add .ball{
+    margin: 15px 0px 0px 0px;
+    text-align: center;
+    font-size: 47px;
+    color: rgb(8, 5, 5) ;
+}
+
+.add .bat{
+    background-color: rgb(41, 39, 39);
+    font-size: 16px;
+    padding: 19px 94px 13px 76px;
+    border-radius: 8px;
+    height: 3vh;
+    width: 18vw;
+   margin: 10px 0px 0px 478px;
+   color: white;
+   
+}
+
+.add .login{
+    border: none;
+    color: whitesmoke;
+    background-color: rgb(202, 53, 53);
+    font-size: 26px;
+    padding: 11px 28px 11px 28px;
+    border-radius: 8px;
+    height: 7vh;
+    width: vw;
+    cursor: pointer;
+}
+.recipe-list {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Recipe list heading */
+.recipe-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Individual recipe card styling */
+.recipe-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Recipe image styling */
+.recipe-card img {
+    width: 100%;
+    height: 200px; /* Set height for consistency */
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Recipe title styling */
+.recipe-card h3 {
+    color: #ff6347;
+    margin-bottom: 8px;
+}
+
+/* Recipe description styling */
+.recipe-card p {
+    margin-bottom: 8px;
+}
+
+/* Rating text color and bold weight */
+.rating {
+    color: #ffac33;
+    font-weight: bold;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Recipe addition form container */
