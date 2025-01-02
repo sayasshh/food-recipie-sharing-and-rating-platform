@@ -1,0 +1,148 @@
+import java.util.List;
+
+public class Recipe {
+    private String name;
+    private String instructions;
+    private List<String> ingredients;
+    private double averageRating;
+    private int ratingCount;
+
+    // Constructor
+    public Recipe(String name, List<String> ingredients, String instructions) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.averageRating = 0;
+        this.ratingCount = 0;
+    }
+
+    // Method to add a rating
+    public void addRating(double rating) {
+        this.averageRating = ((this.averageRating * this.ratingCount) + rating) / (++this.ratingCount);
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe: " + name + "\n" +
+               "Ingredients: " + ingredients + "\n" +
+               "Instructions: " + instructions + "\n" +
+               "Average Rating: " + averageRating + " (" + ratingCount + " ratings)\n";
+    }
+}
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class RecipePlatform {
+    private List<Recipe> recipes;
+    
+    // Constructor to initialize the recipe list
+    public RecipePlatform() {
+        recipes = new ArrayList<>();
+    }
+
+    // Method to add a new recipe
+    public void addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+    }
+
+    // Method to rate a recipe
+    public void rateRecipe(String recipeName, double rating) {
+        for (Recipe recipe : recipes) {
+            if (recipe.getName().equalsIgnoreCase(recipeName)) {
+                recipe.addRating(rating);
+                System.out.println("Rating added successfully!");
+                return;
+            }
+        }
+        System.out.println("Recipe not found!");
+    }
+
+    // Method to display all recipes
+    public void displayRecipes() {
+        if (recipes.isEmpty()) {
+            System.out.println("No recipes available!");
+            return;
+        }
+        for (Recipe recipe : recipes) {
+            System.out.println(recipe);
+        }
+    }
+
+    // Main method for user interaction
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        RecipePlatform platform = new RecipePlatform();
+
+        while (true) {
+            System.out.println("\nRecipe Platform Menu:");
+            System.out.println("1. Add Recipe");
+            System.out.println("2. Rate Recipe");
+            System.out.println("3. View Recipes");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline
+
+            if (choice == 1) {
+                System.out.print("Enter recipe name: ");
+                String name = scanner.nextLine();
+                System.out.print("Enter instructions: ");
+                String instructions = scanner.nextLine();
+                
+                List<String> ingredients = new ArrayList<>();
+                System.out.print("Enter number of ingredients: ");
+                int numIngredients = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                for (int i = 0; i < numIngredients; i++) {
+                    System.out.print("Enter ingredient " + (i + 1) + ": ");
+                    ingredients.add(scanner.nextLine());
+                }
+
+                Recipe recipe = new Recipe(name, ingredients, instructions);
+                platform.addRecipe(recipe);
+                System.out.println("Recipe added successfully!");
+
+            } else if (choice == 2) {
+                System.out.print("Enter the recipe name to rate: ");
+                String recipeName = scanner.nextLine();
+                System.out.print("Enter your rating (1-5): ");
+                double rating = scanner.nextDouble();
+                scanner.nextLine(); // Consume newline
+                platform.rateRecipe(recipeName, rating);
+
+            } else if (choice == 3) {
+                platform.displayRecipes();
+
+            } else if (choice == 4) {
+                System.out.println("Exiting the platform...");
+                break;
+            } else {
+                System.out.println("Invalid choice! Please try again.");
+            }
+        }
+
+        scanner.close();
+    }
+}
