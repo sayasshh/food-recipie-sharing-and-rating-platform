@@ -1,0 +1,67 @@
+// File: Recipe.java
+package com.example.recipes.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
+@Entity
+public class Recipe {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "Name is mandatory")
+    private String name;
+
+    @NotBlank(message = "Ingredients are mandatory")
+    private String ingredients;
+
+    @NotBlank(message = "Instructions are mandatory")
+    private String instructions;
+
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+}
+
+// File: RecipeRepository.java
+package com.example.recipes.repository;
+
+import com.example.recipes.model.Recipe;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+}
