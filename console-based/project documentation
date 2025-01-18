@@ -1,0 +1,27 @@
+# Console-based Recipe Sharing Platform
+
+## Description
+This is a console-based recipe sharing platform that allows users to add, search, and filter recipes based on ingredients. It provides basic functionality for managing a collection of recipes and is built in Java.
+
+## Features
+- **Add Recipe**: Users can add new recipes by providing a name, description, ingredients, and instructions.
+- **View All Recipes**: Users can view all the recipes saved in the system.
+- **Search by Name**: Users can search for a recipe by its name.
+- **Filter by Ingredient**: Users can filter recipes based on ingredients, which allows finding recipes containing specific ingredients.
+- **Data Validation**: Basic input validation ensures that all fields are filled before adding a recipe.
+
+## Technologies Used
+- Java 8+ for building the application
+- Console-based user interface
+- Lists for storing recipes in memory
+
+## Setup Instructions
+
+### Prerequisites
+- Java 8+ installed
+- A Java IDE or terminal to compile and run the program
+
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/recipe-sharing-platform.git
+cd recipe-sharing-platform
