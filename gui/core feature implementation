@@ -1,0 +1,11 @@
+# recipe_manager.py
+class RecipeManager:
+    def __init__(self):
+        self.recipes = []
+
+    def add_recipe(self, title, ingredients, instructions):
+        recipe = {"title": title, "ingredients": ingredients, "instructions": instructions}
+        self.recipes.append(recipe)
+
+    def get_recipes(self):
+        return self.recipes
