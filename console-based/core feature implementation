@@ -1,0 +1,205 @@
+package com.example.recipeplatform.model;
+
+public class Recipe {
+    private String name;
+    private String description;
+    private String ingredients;
+    private String instructions;
+
+    public Recipe(String name, String description, String ingredients, String instructions) {
+        this.name = name;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe Name: " + name + "\nDescription: " + description + "\nIngredients: " + ingredients + "\nInstructions: " + instructions;
+    }
+}
+
+package com.example.recipeplatform.service;
+
+import com.example.recipeplatform.model.Recipe;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecipeService {
+    private List<Recipe> recipes = new ArrayList<>();
+
+    // Add a new recipe
+    public void addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+    }
+
+    // Get all recipes
+    public List<Recipe> getAllRecipes() {
+        return recipes;
+    }
+
+    // Get a specific recipe by name
+    public Recipe getRecipeByName(String name) {
+        for (Recipe recipe : recipes) {
+            if (recipe.getName().equalsIgnoreCase(name)) {
+                return recipe;
+            }
+        }
+        return null;
+    }
+
+    // Update an existing recipe
+    public boolean updateRecipe(String name, Recipe updatedRecipe) {
+        for (int i = 0; i < recipes.size(); i++) {
+            if (recipes.get(i).getName().equalsIgnoreCase(name)) {
+                recipes.set(i, updatedRecipe);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Delete a recipe
+    public boolean deleteRecipe(String name) {
+        return recipes.removeIf(recipe -> recipe.getName().equalsIgnoreCase(name));
+    }
+}
+
+package com.example.recipeplatform;
+
+import com.example.recipeplatform.model.Recipe;
+import com.example.recipeplatform.service.RecipeService;
+import java.util.List;
+import java.util.Scanner;
+
+public class RecipeApp {
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final RecipeService recipeService = new RecipeService();
+
+    public static void main(String[] args) {
+        boolean running = true;
+        
+        while (running) {
+            printMenu();
+            int choice = getChoice();
+            switch (choice) {
+                case 1:
+                    listAllRecipes();
+                    break;
+                case 2:
+                    addNewRecipe();
+                    break;
+                case 3:
+                    updateRecipe();
+                    break;
+                case 4:
+                    deleteRecipe();
+                    break;
+                case 5:
+                    System.out.println("Exiting the program...");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice, please try again.");
+            }
+        }
+    }
+
+    private static void printMenu() {
+        System.out.println("\n--- Recipe Sharing Platform ---");
+        System.out.println("1. List all recipes");
+        System.out.println("2. Add a new recipe");
+        System.out.println("3. Update an existing recipe");
+        System.out.println("4. Delete a recipe");
+        System.out.println("5. Exit");
+        System.out.print("Choose an option: ");
+    }
+
+    private static int getChoice() {
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+
+    private static void listAllRecipes() {
+        List<Recipe> recipes = recipeService.getAllRecipes();
+        if (recipes.isEmpty()) {
+            System.out.println("No recipes available.");
+        } else {
+            for (Recipe recipe : recipes) {
+                System.out.println("\n" + recipe);
+            }
+        }
+    }
+
+    private static void addNewRecipe() {
+        System.out.print("Enter recipe name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter recipe description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Enter recipe ingredients: ");
+        String ingredients = scanner.nextLine();
+
+        System.out.print("Enter recipe instructions: ");
+        String instructions = scanner.nextLine();
+
+        Recipe recipe = new Recipe(name, description, ingredients, instructions);
+        recipeService.addRecipe(recipe);
+        System.out.println("Recipe added successfully!");
+    }
+
+    private static void updateRecipe() {
+        System.out.print("Enter the name of the recipe to update: ");
+        String name = scanner.nextLine();
+
+        Recipe existingRecipe = recipeService.getRecipeByName(name);
+        if (existingRecipe == null) {
+            System.out.println("Recipe not found.");
+        } else {
+            System.out.println("Updating recipe: " + existingRecipe);
+            System.out.print("Enter new description: ");
+            String description = scanner.nextLine();
+            System.out.print("Enter new ingredients: ");
+            String ingredients = scanner.nextLine();
+            System.out.print("Enter new instructions: ");
+            String instructions = scanner.nextLine();
+
+            Recipe updatedRecipe = new Recipe(name, description, ingredients, instructions);
+            if (recipeService.updateRecipe(name, updatedRecipe)) {
+                System.out.println("Recipe updated successfully!");
+            } else {
+                System.out.println("Error updating recipe.");
+            }
+        }
+    }
+
+    private static void deleteRecipe() {
+        System.out.print("Enter the name of the recipe to delete: ");
+        String name = scanner.nextLine();
+        if (recipeService.deleteRecipe(name)) {
+            System.out.println("Recipe deleted successfully.");
+        } else {
+            System.out.println("Recipe not found.");
+        }
+    }
+}
