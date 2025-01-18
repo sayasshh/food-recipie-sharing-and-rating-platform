@@ -1,0 +1,29 @@
+# Recipe Sharing Platform - Maven-based Project
+
+## Description
+This is a Maven-based **Recipe Sharing Platform** where users can add, search, and view recipes. The platform is structured with a service layer, DAO layer, and unit tests to ensure code quality and maintainability.
+
+## Technologies Used
+- **Java 8+**
+- **Maven** for dependency management
+- **JUnit 5** for unit testing
+- **Mockito** for mocking dependencies in service tests
+
+## Features
+- **Add Recipe**: Users can add recipes by providing a name, description, ingredients, and instructions.
+- **Search Recipe by Name**: Users can search for recipes by name.
+- **View All Recipes**: Users can view all recipes in the platform.
+- **Data Access Layer (DAO)**: Manages interactions with the recipe data.
+- **Service Layer**: Handles business logic and communicates with the DAO.
+- **Unit Tests**: Comprehensive unit tests for the service and DAO layers.
+
+## Setup Instructions
+
+### Prerequisites
+- Java 8+ installed
+- Maven installed
+
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/recipe-sharing-platform.git
+cd recipe-sharing-platform
