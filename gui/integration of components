@@ -1,0 +1,14 @@
+@FXML
+private void onAddRecipe() {
+    String name = recipeNameField.getText();
+    String description = recipeDescriptionField.getText();
+    
+    if (name.isEmpty() || description.isEmpty()) {
+        showError("Please fill out all fields.");
+    } else {
+        recipeService.addRecipe(new Recipe(name, description));
+        loadRecipes(); // Refresh the ListView
+        recipeNameField.clear();
+        recipeDescriptionField.clear();
+    }
+}
