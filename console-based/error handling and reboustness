@@ -1,0 +1,22 @@
+private static int getChoice() {
+    try {
+        return Integer.parseInt(scanner.nextLine());
+    } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter a valid number.");
+        return -1;  // Return invalid choice to prompt the user again
+    }
+}
+
+public boolean updateRecipe(String name, Recipe updatedRecipe) {
+    for (int i = 0; i < recipes.size(); i++) {
+        if (recipes.get(i).getName().equalsIgnoreCase(name)) {
+            recipes.set(i, updatedRecipe);
+            return true;
+        }
+    }
+    return false; // Return false if recipe not found
+}
+
+public boolean deleteRecipe(String name) {
+    return recipes.removeIf(recipe -> recipe.getName().equalsIgnoreCase(name));  // Return true if removed
+}
