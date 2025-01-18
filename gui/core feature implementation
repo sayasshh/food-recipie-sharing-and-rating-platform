@@ -1,11 +1,92 @@
-# recipe_manager.py
-class RecipeManager:
-    def __init__(self):
-        self.recipes = []
+package com.example.recipeplatform;
 
-    def add_recipe(self, title, ingredients, instructions):
-        recipe = {"title": title, "ingredients": ingredients, "instructions": instructions}
-        self.recipes.append(recipe)
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-    def get_recipes(self):
-        return self.recipes
+public class RecipeApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Recipe Sharing Platform");
+        
+        // Display the main screen (a placeholder message here)
+        StackPane root = new StackPane();
+        Text welcomeText = new Text("Welcome to Recipe Sharing Platform!");
+        root.getChildren().add(welcomeText);
+        
+        Scene scene = new Scene(root, 400, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+package com.example.recipeplatform.controller;
+
+import com.example.recipeplatform.model.Recipe;
+import com.example.recipeplatform.service.RecipeService;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Region;
+
+import java.util.List;
+
+public class RecipeController {
+
+    private RecipeService recipeService = new RecipeService();
+
+    @FXML
+    private TextField recipeNameField;
+
+    @FXML
+    private TextField recipeDescriptionField;
+
+    @FXML
+    private ListView<String> recipeListView;
+
+    public void initialize() {
+        loadRecipes();
+    }
+
+    private void loadRecipes() {
+        List<Recipe> recipes = recipeService.getAllRecipes();
+        for (Recipe recipe : recipes) {
+            recipeListView.getItems().add(recipe.getName());
+        }
+    }
+
+    @FXML
+    private void onAddRecipe() {
+        String name = recipeNameField.getText();
+        String description = recipeDescriptionField.getText();
+        
+        if (name.isEmpty() || description.isEmpty()) {
+            showError("Please fill out all fields.");
+        } else {
+            recipeService.addRecipe(new Recipe(name, description));
+            loadRecipes();
+            recipeNameField.clear();
+            recipeDescriptionField.clear();
+        }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.showAndWait();
+    }
+}
+
