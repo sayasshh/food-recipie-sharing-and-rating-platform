@@ -1,0 +1,69 @@
+package com.recipeapp.dao;
+
+import com.recipeapp.model.Recipe;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecipeDAO {
+
+    private List<Recipe> recipeList = new ArrayList<>();
+
+    // Add a recipe to the list
+    public void addRecipe(Recipe recipe) {
+        recipeList.add(recipe);
+    }
+
+    // Retrieve all recipes
+    public List<Recipe> getAllRecipes() {
+        return recipeList;
+    }
+
+    // Search for a recipe by name
+    public Recipe getRecipeByName(String name) {
+        for (Recipe recipe : recipeList) {
+            if (recipe.getName().equalsIgnoreCase(name)) {
+                return recipe;
+            }
+        }
+        return null;
+    }
+}
+
+package com.recipeapp.dao;
+
+import com.recipeapp.model.Recipe;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RecipeDAOTest {
+
+    private RecipeDAO recipeDAO;
+    private Recipe recipe;
+
+    @BeforeEach
+    public void setup() {
+        recipeDAO = new RecipeDAO();
+        recipe = new Recipe("Pasta", "Delicious pasta", "Pasta, Sauce", "Boil pasta and mix with sauce.");
+        recipeDAO.addRecipe(recipe);
+    }
+
+    @Test
+    public void testAddRecipe() {
+        assertEquals(1, recipeDAO.getAllRecipes().size());
+    }
+
+    @Test
+    public void testGetRecipeByName() {
+        Recipe foundRecipe = recipeDAO.getRecipeByName("Pasta");
+        assertNotNull(foundRecipe);
+        assertEquals("Pasta", foundRecipe.getName());
+    }
+
+    @Test
+    public void testGetRecipeByNameNotFound() {
+        Recipe foundRecipe = recipeDAO.getRecipeByName("Nonexistent");
+        assertNull(foundRecipe);
+    }
+}
