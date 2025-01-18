@@ -1,0 +1,44 @@
+// File: RecipeService.java
+package com.example.recipes.service;
+
+import com.example.recipes.model.Recipe;
+import com.example.recipes.repository.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class RecipeService {
+
+    @Autowired
+    private RecipeRepository recipeRepository;
+
+    public List<Recipe> getAllRecipes() {
+        return recipeRepository.findAll();
+    }
+
+    public Optional<Recipe> getRecipeById(Long id) {
+        return recipeRepository.findById(id);
+    }
+
+    public Recipe createRecipe(Recipe recipe) {
+        return recipeRepository.save(recipe);
+    }
+
+    public Optional<Recipe> updateRecipe(Long id, Recipe updatedRecipe) {
+        return recipeRepository.findById(id).map(recipe -> {
+            recipe.setName(updatedRecipe.getName());
+            recipe.setIngredients(updatedRecipe.getIngredients());
+            recipe.setInstructions(updatedRecipe.getInstructions());
+            return recipeRepository.save(recipe);
+        });
+    }
+
+    public Optional<Void> deleteRecipe(Long id) {
+        return recipeRepository.findById(id).map(recipe -> {
+            recipeRepository.delete(recipe);
+            return null;
+        });
+    }
+}
