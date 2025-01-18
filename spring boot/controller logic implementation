@@ -1,0 +1,50 @@
+// File: RecipeController.java
+package com.example.recipes.controller;
+
+import com.example.recipes.exception.ResourceNotFoundException;
+import com.example.recipes.model.Recipe;
+import com.example.recipes.service.RecipeService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/recipes")
+public class RecipeController {
+
+    @Autowired
+    private RecipeService recipeService;
+
+    @GetMapping
+    public List<Recipe> getAllRecipes() {
+        return recipeService.getAllRecipes();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable Long id) {
+        Recipe recipe = recipeService.getRecipeById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recipe not found with id: " + id));
+        return ResponseEntity.ok(recipe);
+    }
+
+    @PostMapping
+    public Recipe createRecipe(@Valid @RequestBody Recipe recipe) {
+        return recipeService.createRecipe(recipe);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Recipe> updateRecipe(@PathVariable Long id, @Valid @RequestBody Recipe updatedRecipe) {
+        Recipe recipe = recipeService.updateRecipe(id, updatedRecipe)
+                .orElseThrow(() -> new ResourceNotFoundException("Recipe not found with id: " + id));
+        return ResponseEntity.ok(recipe);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRecipe(@PathVariable Long id) {
+        recipeService.deleteRecipe(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recipe not found with id: " + id));
+        return ResponseEntity.noContent().build();
+    }
+}
