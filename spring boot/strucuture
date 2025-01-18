@@ -1,0 +1,19 @@
+src/
+└── main/
+    ├── java/
+    │   └── com/
+    │       └── example/
+    │           └── recipeplatform/
+    │               ├── controller/
+    │               │   └── RecipeController.java
+    │               ├── exception/
+    │               │   ├── GlobalExceptionHandler.java
+    │               │   └── RecipeNotFoundException.java
+    │               ├── model/
+    │               │   └── Recipe.java
+    │               ├── repository/
+    │               │   └── RecipeRepository.java
+    │               └── service/
+    │                   └── RecipeService.java
+    └── resources/
+        └── application.properties
