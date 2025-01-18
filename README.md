@@ -1,4 +1,4 @@
-# food-recipie-sharing-and-rating-platform
+# Food-Recipie-Sharing-and-Rating-Platform
 
 Overview
 The Food Recipe Sharing and Rating System is a web-based application that allows users to share their favorite recipes, browse recipes shared by others, and rate them. This system aims to create a community of food enthusiasts who can exchange culinary ideas and experiences.
@@ -29,7 +29,9 @@ Authentication: JWT (JSON Web Tokens)
 
 
 How It Works
-Add Recipe: When a user adds a recipe, the system prompts for the name, description, ingredients, and instructions. The recipe is stored in memory and can later be retrieved or searched.
+Add Recipe: When a user adds a recipe, 
+the system prompts for the name, description, ingredients, and instructions. 
+The recipe is stored in memory and can later be retrieved or searched.
 
 Search by Name: The system allows users to search for recipes by their name. If the recipe exists in the system, its details are displayed.
 
@@ -43,24 +45,45 @@ Service Tests: Mock the DAO and verify that the service methods behave correctly
 
 Example Usage:
 Adding a Recipe:
+
 Enter recipe name: Pasta
+
 Enter recipe description: Delicious pasta with tomato sauce.
+
 Enter ingredients: Pasta, Tomato Sauce, Garlic
+
 Enter instructions: Boil the pasta, sauté garlic, add sauce and mix.
+
 Recipe added successfully!
 
+
 Searching for a Recipe by Name:
+
 Enter recipe name to search: Pasta
+
 Recipe Found: 
+
 Recipe Name: Pasta
+
 Description: Delicious pasta with tomato sauce.
+
 Ingredients: Pasta, Tomato Sauce, Garlic
+
 Instructions: Boil the pasta, sauté garlic, add sauce and mix.
 
+
+
 Filtering Recipes by Ingredient:
+
 Enter ingredient to filter recipes by: Garlic
+
 Filtered Recipes:
+
 Recipe Name: Pasta
+
 Description: Delicious pasta with tomato sauce.
+
 Ingredients: Pasta, Tomato Sauce, Garlic
+
 Instructions: Boil the pasta, sauté garlic, add sauce and mix.
+
