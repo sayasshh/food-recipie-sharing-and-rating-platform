@@ -1,7 +1,43 @@
-# error_handler.py
-import logging
+@FXML
+private void onAddRecipe() {
+    try {
+        String name = recipeNameField.getText();
+        String description = recipeDescriptionField.getText();
+        
+        if (name.isEmpty() || description.isEmpty()) {
+            showError("Please fill out all fields.");
+        } else {
+            recipeService.addRecipe(new Recipe(name, description));
+            loadRecipes();
+            recipeNameField.clear();
+            recipeDescriptionField.clear();
+        }
+    } catch (Exception e) {
+        showError("An error occurred while adding the recipe.");
+    }
+}
 
-def log_error(error_message):
-    logging.basicConfig(filename='logs/error_log.txt', level=logging.ERROR)
-    logging.error(error_message)
+
+package com.example.recipeplatform.service;
+
+import com.example.recipeplatform.model.Recipe;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecipeService {
+
+    private List<Recipe> recipes = new ArrayList<>();
+
+    public List<Recipe> getAllRecipes() {
+        return recipes;
+    }
+
+    public void addRecipe(Recipe recipe) throws Exception {
+        if (recipe.getName().isEmpty() || recipe.getDescription().isEmpty()) {
+            throw new Exception("Recipe details are incomplete");
+        }
+        recipes.add(recipe);
+    }
+}
 
