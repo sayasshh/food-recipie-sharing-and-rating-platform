@@ -1,0 +1,6 @@
+The code is designed to be modular by separating concerns into different classes:
+
+Recipe handles the recipe data.
+RecipeService manages the core recipe logic (adding, updating, deleting, listing).
+RecipeApp is responsible for user interaction and managing the application flow.
+Additionally, methods like listAllRecipes(), addNewRecipe(), updateRecipe(), and deleteRecipe() are responsible for specific tasks, keeping the RecipeApp class clean and easy to read.
