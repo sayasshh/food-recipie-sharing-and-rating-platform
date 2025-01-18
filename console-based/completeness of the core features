@@ -1,0 +1,6 @@
+The core features include:
+
+Listing Recipes: Shows all recipes in the system.
+Adding a Recipe: Allows the user to add a new recipe.
+Updating a Recipe: Allows the user to update an existing recipe by name.
+Deleting a Recipe: Allows the user to delete a recipe by name.
