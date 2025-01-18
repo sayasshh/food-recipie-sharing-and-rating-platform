@@ -57,6 +57,8 @@ Enter instructions: Boil the pasta, sauté garlic, add sauce and mix.
 Recipe added successfully!
 
 
+
+
 Searching for a Recipe by Name:
 
 Enter recipe name to search: Pasta
@@ -70,6 +72,8 @@ Description: Delicious pasta with tomato sauce.
 Ingredients: Pasta, Tomato Sauce, Garlic
 
 Instructions: Boil the pasta, sauté garlic, add sauce and mix.
+
+
 
 
 
