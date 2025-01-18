@@ -3,7 +3,7 @@
 Overview
 The Food Recipe Sharing and Rating System is a web-based application that allows users to share their favorite recipes, browse recipes shared by others, and rate them. This system aims to create a community of food enthusiasts who can exchange culinary ideas and experiences.
 
-Features
+
 User Registration & Authentication: Users can create an account, log in, and manage their profiles.
 Recipe Submission: Users can submit their own recipes with details such as ingredients, instructions, cooking time, and images.
 Recipe Browsing: Users can browse through a collection of recipes submitted by others.
@@ -16,95 +16,51 @@ Frontend: HTML, CSS, JavaScript (React or Vue.js)
 Backend: Node.js with Express
 Database: MongoDB or PostgreSQL
 Authentication: JWT (JSON Web Tokens)
-Hosting: Heroku, Vercel, or any cloud provider
-Installation
-Prerequisites
-Make sure you have the following installed:
 
-Node.js
-npm (Node Package Manager)
-MongoDB or PostgreSQL (for database)
-Steps to Run the Application
-Clone the Repository:
+## Features
 
-bash
+- **Add Recipe**: Users can add a new recipe with details such as name, description, ingredients, and instructions.
+- **Search Recipe by Name**: Users can search for recipes by their name.
+- **Filter Recipes by Ingredient**: Users can filter recipes based on ingredients present in the recipe.
+- **View All Recipes**: Displays all the recipes added to the platform.
+- **Service Layer**: Handles the core business logic of the platform.
+- **DAO Layer**: Manages data access, simulating interaction with a database.
+- **Unit Testing**: Comprehensive unit tests for both service and DAO layers using **JUnit** and **Mockito**.
 
-Verify
 
-Open In Editor
-Edit
-Copy code
-git clone https://github.com/sayasshh/ food-recipe-sharing-and-rating-system.git
-cd recipe-sharing-system
-Install Dependencies:
+How It Works
+Add Recipe: When a user adds a recipe, the system prompts for the name, description, ingredients, and instructions. The recipe is stored in memory and can later be retrieved or searched.
 
-Navigate to both the frontend and backend directories and install the necessary packages.
+Search by Name: The system allows users to search for recipes by their name. If the recipe exists in the system, its details are displayed.
 
-bash
+Filter by Ingredient: Users can filter recipes by a specific ingredient. The system checks which recipes contain the ingredient and returns matching results.
 
-Verify
+Unit Testing: The project includes unit tests for both the DAO and Service layers:
 
-Open In Editor
-Edit
-Copy code
-cd frontend
-npm install
-cd ../backend
-npm install
-Set Up Environment Variables:
+DAO Tests: Verify the correctness of data retrieval and storage methods.
+Service Tests: Mock the DAO and verify that the service methods behave correctly with different inputs and outputs.
 
-Create a .env file in the backend directory and add your database connection string and other necessary environment variables.
 
-plaintext
+Example Usage:
+Adding a Recipe:
+Enter recipe name: Pasta
+Enter recipe description: Delicious pasta with tomato sauce.
+Enter ingredients: Pasta, Tomato Sauce, Garlic
+Enter instructions: Boil the pasta, sauté garlic, add sauce and mix.
+Recipe added successfully!
 
-Verify
+Searching for a Recipe by Name:
+Enter recipe name to search: Pasta
+Recipe Found: 
+Recipe Name: Pasta
+Description: Delicious pasta with tomato sauce.
+Ingredients: Pasta, Tomato Sauce, Garlic
+Instructions: Boil the pasta, sauté garlic, add sauce and mix.
 
-Open In Editor
-Edit
-Copy code
-DATABASE_URL=your_database_url
-JWT_SECRET=your_jwt_secret
-Run the Application:
-
-Start the backend server:
-
-bash
-
-Verify
-
-Open In Editor
-Edit
-Copy code
-cd backend
-npm start
-Start the frontend development server:
-
-bash
-
-Verify
-
-Open In Editor
-Edit
-Copy code
-cd frontend
-npm start
-Access the Application:
-
-Open your web browser and go to http://localhost:3000 to view the application.
-
-Usage
-Register an Account: Click on the "Sign Up" button and fill in your details to create an account.
-Submit a Recipe: After logging in, navigate to the "Submit Recipe" page to add your recipe.
-Browse Recipes: Explore the "Recipes" section to view recipes shared by others.
-Rate and Comment: Click on any recipe to rate it and leave comments.
-Manage Favorites: Save your favorite recipes for quick access later.
-Contributing
-We welcome contributions! If you would like to contribute to this project, please follow these steps:
-
-Fork the repository.
-Create a new branch (git checkout -b feature/YourFeature).
-Make your changes and commit them (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/YourFeature).
-Open a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Filtering Recipes by Ingredient:
+Enter ingredient to filter recipes by: Garlic
+Filtered Recipes:
+Recipe Name: Pasta
+Description: Delicious pasta with tomato sauce.
+Ingredients: Pasta, Tomato Sauce, Garlic
+Instructions: Boil the pasta, sauté garlic, add sauce and mix.
