@@ -1,0 +1,30 @@
+# Recipe Sharing Platform - Spring Boot
+
+## Description
+A Spring Boot-based recipe sharing platform where users can add, update, list, and delete recipes.
+
+## Technologies Used
+- Java 11+
+- Spring Boot 2.x
+- JPA & Hibernate
+- H2 Database (for in-memory storage)
+- JUnit 5 for unit testing
+- Mockito for mocking dependencies in tests
+
+## Features
+- Add a new recipe
+- List all recipes
+- Update an existing recipe
+- Delete a recipe
+
+## Setup Instructions
+
+### Prerequisites
+- Java 11+
+- Maven
+- IDE (e.g., IntelliJ IDEA or Eclipse)
+
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/recipe-sharing-platform.git
+cd recipe-sharing-platform
