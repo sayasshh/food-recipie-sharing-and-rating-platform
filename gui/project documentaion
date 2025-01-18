@@ -1,0 +1,26 @@
+# Recipe Sharing Platform - GUI Edition
+
+## Description
+This is a **GUI-based Recipe Sharing Platform** where users can add, search, and manage their recipes. It provides features like recipe creation, search, and validation of input data.
+
+## Technologies Used
+- Java 8+
+- Swing for GUI
+- JDK 8+ (for development)
+- Maven (for project management)
+
+## Features
+- **Add Recipe**: Users can input a recipe name, description, ingredients, and instructions.
+- **Search Recipes**: Search recipes by name with an instant filtering mechanism.
+- **Data Validation**: Ensures all fields are filled and the recipe name has at least 3 characters.
+- **Clear Fields**: After saving a recipe, the input fields are cleared for the next entry.
+
+## Setup Instructions
+
+### Prerequisites
+Ensure you have **Java 8+** installed and a **Maven-compatible IDE** (e.g., IntelliJ IDEA, Eclipse).
+
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/recipe-sharing-platform.git
+cd recipe-sharing-platform
