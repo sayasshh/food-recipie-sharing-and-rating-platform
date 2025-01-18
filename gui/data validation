@@ -1,0 +1,87 @@
+package com.example.recipeapp;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RecipeForm extends JFrame {
+
+    private JTextField nameField;
+    private JTextArea descriptionArea, ingredientsArea, instructionsArea;
+    private JButton saveButton;
+
+    public RecipeForm() {
+        setTitle("Recipe Form");
+        setLayout(new BorderLayout());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 2));
+
+        panel.add(new JLabel("Recipe Name:"));
+        nameField = new JTextField();
+        panel.add(nameField);
+
+        panel.add(new JLabel("Description:"));
+        descriptionArea = new JTextArea();
+        panel.add(new JScrollPane(descriptionArea));
+
+        panel.add(new JLabel("Ingredients:"));
+        ingredientsArea = new JTextArea();
+        panel.add(new JScrollPane(ingredientsArea));
+
+        panel.add(new JLabel("Instructions:"));
+        instructionsArea = new JTextArea();
+        panel.add(new JScrollPane(instructionsArea));
+
+        saveButton = new JButton("Save Recipe");
+        panel.add(saveButton);
+
+        add(panel, BorderLayout.CENTER);
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (validateInputs()) {
+                    // Save recipe logic
+                    JOptionPane.showMessageDialog(null, "Recipe Saved Successfully!");
+                    clearFields();
+                }
+            }
+        });
+
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    private boolean validateInputs() {
+        String name = nameField.getText();
+        String description = descriptionArea.getText();
+        String ingredients = ingredientsArea.getText();
+        String instructions = instructionsArea.getText();
+
+        if (name.isEmpty() || description.isEmpty() || ingredients.isEmpty() || instructions.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (name.length() < 3) {
+            JOptionPane.showMessageDialog(this, "Recipe name must be at least 3 characters long.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void clearFields() {
+        nameField.setText("");
+        descriptionArea.setText("");
+        ingredientsArea.setText("");
+        instructionsArea.setText("");
+    }
+
+    public static void main(String[] args) {
+        new RecipeForm();
+    }
+}
