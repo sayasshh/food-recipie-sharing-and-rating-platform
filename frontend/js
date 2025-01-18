@@ -1,0 +1,96 @@
+// Sample recipe data (in a real scenario, this would come from the backend)
+let recipes = [];
+
+document.getElementById("recipe-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    addRecipe();
+});
+
+function addRecipe() {
+    const name = document.getElementById("recipe-name").value;
+    const ingredients = document.getElementById("recipe-ingredients").value.split(",").map(item => item.trim());
+    const description = document.getElementById("recipe-description").value;
+    const instructions = document.getElementById("recipe-instructions").value;
+
+    const recipe = {
+        name,
+        ingredients,
+        description,
+        instructions
+    };
+
+    recipes.push(recipe);
+    displayRecipes();
+    clearForm();
+}
+
+function displayRecipes() {
+    const recipeListElement = document.getElementById("recipes-list");
+    recipeListElement.innerHTML = "";
+
+    recipes.forEach(recipe => {
+        const recipeItem = document.createElement("li");
+        recipeItem.classList.add("recipe-item");
+        
+        recipeItem.innerHTML = `
+            <h3>${recipe.name}</h3>
+            <p><strong>Ingredients:</strong> ${recipe.ingredients.join(", ")}</p>
+            <p><strong>Description:</strong> ${recipe.description}</p>
+            <button onclick="viewRecipeDetails('${recipe.name}')">View Details</button>
+        `;
+        
+        recipeListElement.appendChild(recipeItem);
+    });
+}
+
+function clearForm() {
+    document.getElementById("recipe-name").value = "";
+    document.getElementById("recipe-ingredients").value = "";
+    document.getElementById("recipe-description").value = "";
+    document.getElementById("recipe-instructions").value = "";
+}
+
+function viewRecipeDetails(recipeName) {
+    const recipe = recipes.find(r => r.name === recipeName);
+    if (recipe) {
+        alert(`
+            Name: ${recipe.name}
+            Ingredients: ${recipe.ingredients.join(", ")}
+            Description: ${recipe.description}
+            Instructions: ${recipe.instructions}
+        `);
+    }
+}
+
+function searchRecipes() {
+    const searchTerm = document.getElementById("search-input").value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
+    displayFilteredRecipes(filteredRecipes);
+}
+
+function filterRecipes() {
+    const ingredient = document.getElementById("filter-ingredient").value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => 
+        recipe.ingredients.some(i => i.toLowerCase().includes(ingredient))
+    );
+    displayFilteredRecipes(filteredRecipes);
+}
+
+function displayFilteredRecipes(filteredRecipes) {
+    const recipeListElement = document.getElementById("recipes-list");
+    recipeListElement.innerHTML = "";
+
+    filteredRecipes.forEach(recipe => {
+        const recipeItem = document.createElement("li");
+        recipeItem.classList.add("recipe-item");
+        
+        recipeItem.innerHTML = `
+            <h3>${recipe.name}</h3>
+            <p><strong>Ingredients:</strong> ${recipe.ingredients.join(", ")}</p>
+            <p><strong>Description:</strong> ${recipe.description}</p>
+            <button onclick="viewRecipeDetails('${recipe.name}')">View Details</button>
+        `;
+        
+        recipeListElement.appendChild(recipeItem);
+    });
+}
