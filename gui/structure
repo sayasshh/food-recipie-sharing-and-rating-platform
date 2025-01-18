@@ -1,0 +1,15 @@
+src/
+└── main/
+    ├── java/
+    │   └── com/
+    │       └── example/
+    │           └── recipeplatform/
+    │               ├── controller/
+    │               │   └── RecipeController.java
+    │               ├── model/
+    │               │   └── Recipe.java
+    │               ├── service/
+    │               │   └── RecipeService.java
+    │               └── RecipeApp.java
+    └── resources/
+        └── recipe_app.fxml
