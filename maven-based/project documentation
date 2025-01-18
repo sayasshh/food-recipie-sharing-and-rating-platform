@@ -1,0 +1,29 @@
+recipe-sharing-platform/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           ├── controllers/
+│   │   │           │   ├── UserRegistrationServlet.java
+│   │   │           │   ├── UserProfileServlet.java
+│   │   │           │   ├── LoginServlet.java
+│   │   │           ├── models/
+│   │   │           │   └── User.java
+│   │   │           ├── utils/
+│   │   │               └── DatabaseConnection.java
+│   │   ├── resources/
+│   │   │   └── application.properties
+│   │   └── webapp/
+│   │       ├── WEB-INF/
+│   │       │   ├── web.xml
+│   │       │   └── views/
+│   │       │       ├── register.jsp
+│   │       │       ├── profile.jsp
+│   │       │       ├── userData.jsp
+│   │       ├── css/
+│   │       │   └── styles.css
+│   │       └── index.jsp
+├── pom.xml
+└── README.md
