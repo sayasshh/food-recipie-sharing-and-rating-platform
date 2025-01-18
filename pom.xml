@@ -1,15 +1,4 @@
-To set up a Maven project for your Food Recipe Sharing and Rating System, you need to create a pom.xml file. This file will define the project dependencies, build configuration, and other settings necessary for your Java application.
 
-Below is a sample pom.xml for a project that uses JDBC to connect to a MySQL database, along with some common libraries that you might find useful for a typical web application:
-
-Sample pom.xml
-xml
-
-Verify
-
-Open In Editor
-Edit
-Copy code
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
