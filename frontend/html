@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+            <h1>Recipe Sharing Platform</h1>
+        </div>
+    </header>
+
+    <main>
+        <!-- Add Recipe Form -->
+        <section id="add-recipe-section">
+            <h2>Add a Recipe</h2>
+            <form id="recipe-form">
+                <input type="text" id="recipe-name" placeholder="Recipe Name" required>
+                <input type="text" id="recipe-ingredients" placeholder="Ingredients (comma separated)" required>
+                <textarea id="recipe-description" placeholder="Recipe Description" required></textarea>
+                <textarea id="recipe-instructions" placeholder="Instructions" required></textarea>
+                <button type="submit">Add Recipe</button>
+            </form>
+        </section>
+
+        <!-- Search and Filter Recipes -->
+        <section id="search-recipes-section">
+            <h2>Search Recipes</h2>
+            <input type="text" id="search-input" placeholder="Search by name">
+            <button onclick="searchRecipes()">Search</button>
+            <h3>Filter by Ingredient</h3>
+            <input type="text" id="filter-ingredient" placeholder="Enter ingredient">
+            <button onclick="filterRecipes()">Filter</button>
+        </section>
+
+        <!-- Recipes List -->
+        <section id="recipes-list-section">
+            <h2>All Recipes</h2>
+            <ul id="recipes-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Recipe Sharing Platform</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
